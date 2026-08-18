@@ -1,36 +1,18 @@
-// ─── CONFIG ────────────────────────────────────────────────────────────────
-// Paste your Google Apps Script Web App URL here after deploying it:
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcoHHQNbEWd_i1CiLnCJmHqkeiEHBGrW-gIzSJZnCOVO_9uOMFn4lXgmTzmow4EOHe/exec";
-// ───────────────────────────────────────────────────────────────────────────
-
-const INTRO_DURATION = 5000;
-
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("intro").setAttribute("aria-hidden", "true");
   }, INTRO_DURATION);
-
-  generateQRCode();
 });
-
 // ─── FORM → GOOGLE SHEETS ──────────────────────────────────────────────────
 const form = document.getElementById("response-form");
 const successMessage = document.getElementById("success-message");
 const submitBtn = form.querySelector("button[type='submit']");
-
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-
   const name    = document.getElementById("name").value.trim();
   const message = document.getElementById("message").value.trim();
   if (!name || !message) return;
-
   // Show loading state
   submitBtn.disabled = true;
   submitBtn.querySelector("span").textContent = "جاري الإرسال...";
-
   const payload = { name, message, submittedAt: new Date().toISOString() };
-
   try {
     if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === "YOUR_APPS_SCRIPT_URL_HERE") {
       // Dev-mode: just log locally
@@ -43,7 +25,6 @@ form.addEventListener("submit", async (event) => {
         body: JSON.stringify(payload),
       });
     }
-
     form.reset();
     form.hidden = true;
     successMessage.hidden = false;
@@ -54,26 +35,3 @@ form.addEventListener("submit", async (event) => {
     alert("حصل خطأ، حاول تاني!");
   }
 });
-
-// ─── QR CODE GENERATOR ─────────────────────────────────────────────────────
-function generateQRCode() {
-  const container = document.getElementById("qr-container");
-  const wrapper   = document.getElementById("qr-wrapper");
-  if (!container || !wrapper) return;
-
-  const url = window.location.href.split("?")[0]; // clean URL
-
-  // qrcodejs API: new QRCode(element, options)
-  new QRCode(wrapper, {
-    text:         url,
-    width:        180,
-    height:       180,
-    colorDark:    "#07142b",
-    colorLight:   "#f5ede0",
-    correctLevel: QRCode.CorrectLevel.H,
-  });
-
-  container.hidden = false;
-}
-
-
