@@ -1,4 +1,14 @@
+
+// ─── CONFIG ────────────────────────────────────────────────────────────────
+// Paste your Google Apps Script Web App URL here after deploying it:
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcoHHQNbEWd_i1CiLnCJmHqkeiEHBGrW-gIzSJZnCOVO_9uOMFn4lXgmTzmow4EOHe/exec";
+// ───────────────────────────────────────────────────────────────────────────
+const INTRO_DURATION = 5000;
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("intro").setAttribute("aria-hidden", "true");
   }, INTRO_DURATION);
+  generateQRCode();
 });
 // ─── FORM → GOOGLE SHEETS ──────────────────────────────────────────────────
 const form = document.getElementById("response-form");
@@ -22,16 +32,3 @@ form.addEventListener("submit", async (event) => {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-    }
-    form.reset();
-    form.hidden = true;
-    successMessage.hidden = false;
-  } catch (err) {
-    console.error("Submission error:", err);
-    submitBtn.disabled = false;
-    submitBtn.querySelector("span").textContent = "إرسال";
-    alert("حصل خطأ، حاول تاني!");
-  }
-});
