@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#07142b">
+<title>منورين 2026 ✨ | Scout Party</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<section id="intro" class="intro">
+  <div class="glow glow-1"></div><div class="glow glow-2"></div>
+  <div class="lantern">🏮</div>
+  <div class="intro-content">
+    <div class="spark spark-1">✦</div><div class="spark spark-2">✧</div><div class="spark spark-3">✦</div>
+    <p class="intro-small">SCOUT PARTY · 2026</p>
+    <h1>منورين</h1>
+    <div class="intro-line"></div>
+    <p class="intro-subtitle">أهلاً بيكم ❤️</p>
+  </div>
+</section>
+
+<main id="main-page" class="main-page">
+  <header class="hero">
+    <img class="poster" src="poster-reference.png" alt="Scout Party 2026 poster">
+    <p class="eyebrow">SCOUT PARTY · 2026</p>
+    <h2>منورين في حفلتنا ✨</h2>
+    <p class="welcome-text">وجودكم هو اللي مكمل فرحتنا ❤️</p>
+  </header>
+
+  <section class="response-section">
+    <div class="section-icon">🔥</div>
+    <h3>نورك جاي منين؟</h3>
+    <p>سيبولنا رسالة أو حاجة نفسكم تقولوهالنا!</p>
+    <form id="response-form">
+      <label for="name">اسمك</label>
+      <input id="name" name="name" type="text" placeholder="اكتب اسمك" required>
+      <label for="message">رسالتك</label>
+      <textarea id="message" name="message" rows="5" placeholder="اكتب ردك هنا..." required></textarea>
+      <button type="submit"><span>إرسال</span><span>←</span></button>
+    </form>
+    <p id="success-message" class="success-message" hidden>وصلت رسالتك ❤️ شكراً ليك!</p>
+  </section>
+
+  <section class="qr-section" id="qr-container" hidden>
+    <div class="section-icon">📱</div>
+    <h3>شارك الصفحة</h3>
+    <p>امسح الكود عشان تشارك الدعوة مع الكل!</p>
+    <div class="qr-wrapper">
+      <div id="qr-wrapper"></div>
+    </div>
+  </section>
+
+  <footer>Made with ❤️ for our Scout Party</footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
