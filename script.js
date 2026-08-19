@@ -1,6 +1,6 @@
 // ─── CONFIG ────────────────────────────────────────────────────────────────
 // Paste your Google Apps Script Web App URL here after deploying it:
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcoHHQNbEWd_i1CiLnCJmHqkeiEHBGrW-gIzSJZnCOVO_9uOMFn4lXgmTzmow4EOHe/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macrosbEWd_i1CiLnCJmHqkeiEHBGrW-gIzSJZnCOVO_9uOMFn4lXgmTzmow4EOHe/exec";
 // ───────────────────────────────────────────────────────────────────────────
 
 const INTRO_DURATION = 5000;
