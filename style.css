@@ -1,4 +1,3 @@
-
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --night:#07142b;--navy:#0b1d3a;--blue:#123e72;
@@ -35,3 +34,52 @@ body:before{
 .glow{position:absolute;width:300px;height:300px;border-radius:50%;filter:blur(75px);opacity:.22;background:var(--orange)}
 .glow-1{top:-130px;right:-100px;animation:floatGlow 4s ease-in-out infinite}
 .glow-2{bottom:-150px;left:-100px;background:var(--blue);animation:floatGlow 5s ease-in-out infinite reverse}
+.lantern{position:absolute;bottom:10%;left:8%;font-size:3.2rem;filter:drop-shadow(0 0 16px #ff8a24);animation:lanternFloat 3s ease-in-out infinite}
+.spark{position:absolute;color:var(--gold);font-size:1.5rem;opacity:0;animation:sparkle 2s ease-in-out infinite}
+.spark-1{top:10%;right:-15%;animation-delay:1.1s}.spark-2{top:45%;left:-17%;animation-delay:1.6s}.spark-3{bottom:4%;right:8%;animation-delay:2.1s}
+
+.main-page{min-height:100vh;width:100%;max-width:650px;margin:0 auto;padding:28px 18px 20px;opacity:0;transform:translateY(25px);animation:pageIn 1s ease 4.55s forwards}
+.hero{text-align:center;padding-top:5px}
+.poster{
+  width:min(100%,340px);display:block;margin:0 auto 25px;border-radius:22px;
+  border:2px solid rgba(255,194,71,.35);box-shadow:0 22px 60px rgba(0,0,0,.38);
+}
+.eyebrow{color:var(--gold);font-size:.7rem;font-weight:800;letter-spacing:.3em;direction:ltr;margin-bottom:8px}
+.hero h2{font-size:clamp(1.8rem,8vw,3rem);line-height:1.35;font-weight:800;color:var(--cream)}
+.welcome-text{margin-top:8px;color:var(--muted);font-size:.95rem}
+.response-section{
+  margin-top:34px;padding:25px 18px;border:1px solid rgba(255,194,71,.3);border-radius:26px;
+  background:linear-gradient(145deg,rgba(18,62,114,.72),rgba(5,16,35,.86));
+  backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(0,0,0,.25)
+}
+.section-icon{font-size:1.7rem;margin-bottom:2px}.response-section h3{font-size:1.55rem;font-weight:800;color:var(--gold)}
+.response-section>p:not(.success-message){color:var(--muted);font-size:.88rem;margin:3px 0 22px}
+form{display:flex;flex-direction:column;gap:8px}label{font-size:.8rem;color:var(--cream);font-weight:600;margin-top:6px}
+input,textarea{width:100%;border:1px solid rgba(255,244,220,.14);outline:none;border-radius:14px;background:rgba(0,0,0,.22);color:var(--cream);font-family:inherit;font-size:.95rem;padding:13px 14px;transition:.25s}
+input::placeholder,textarea::placeholder{color:rgba(255,244,220,.38)}input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,194,71,.08)}
+textarea{resize:vertical;min-height:120px}
+button{border:0;cursor:pointer;margin-top:10px;padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--orange));color:#151b25;font-family:inherit;font-size:1rem;font-weight:800;display:flex;align-items:center;justify-content:center;gap:12px;transition:.2s}
+button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(244,123,32,.2)}button:active{transform:translateY(0)}
+.success-message{color:var(--gold);text-align:center;font-weight:700;padding-top:16px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:6px}
+.team-btn{
+  border:1.5px solid rgba(255,194,71,.3);cursor:pointer;padding:10px 6px;border-radius:12px;
+  background:rgba(0,0,0,.22);color:var(--cream);font-family:inherit;font-size:.88rem;
+  font-weight:700;transition:.2s;text-align:center;line-height:1.4
+}
+.team-btn:hover{border-color:var(--gold);background:rgba(255,194,71,.08)}
+.team-btn.selected{
+  background:linear-gradient(135deg,var(--gold),var(--orange));
+  color:#151b25;border-color:transparent;
+  box-shadow:0 6px 18px rgba(244,123,32,.3)
+}
+.team-error{color:var(--red);font-size:.82rem;margin-top:-2px;margin-bottom:4px}
+footer{text-align:center;padding:30px 0 15px;color:rgba(255,244,220,.32);font-size:.68rem;direction:ltr}
+
+@keyframes welcomeIn{to{opacity:1;transform:scale(1)}}@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes lineGrow{to{width:95px}}@keyframes sparkle{0%,100%{opacity:0;transform:scale(.5) rotate(0)}50%{opacity:.9;transform:scale(1.2) rotate(25deg)}}
+@keyframes floatGlow{0%,100%{transform:translate(0,0)}50%{transform:translate(35px,25px)}}@keyframes lanternFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+@keyframes introExit{0%{opacity:1;visibility:visible}80%{opacity:0}100%{opacity:0;visibility:hidden;pointer-events:none}}
+@keyframes pageIn{to{opacity:1;transform:translateY(0)}}
+@media(min-width:700px){body{padding:20px 0}.main-page{padding-top:15px}.response-section{padding:32px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
