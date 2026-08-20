@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -11,7 +12,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <section id="intro" class="intro">
   <div class="glow glow-1"></div><div class="glow glow-2"></div>
   <div class="lantern">🏮</div>
@@ -23,7 +23,6 @@
     <p class="intro-subtitle">أهلاً بيكم ❤️</p>
   </div>
 </section>
-
 <main id="main-page" class="main-page">
   <header class="hero">
     <img class="poster" src="poster-reference.png" alt="Scout Party 2026 poster">
@@ -31,36 +30,13 @@
     <h2>منورين في حفلتنا ✨</h2>
     <p class="welcome-text">وجودكم هو اللي مكمل فرحتنا ❤️</p>
   </header>
-
   <section class="response-section">
     <div class="section-icon">🔥</div>
     <h3>نورك جاي منين؟</h3>
     <p>سيبولنا رسالة أو حاجة نفسكم تقولوهالنا!</p>
-    <form id="response-form">
+    <form id="response-form" action="javascript:void(0);" onsubmit="return false;">
       <label for="name">اسمك</label>
-      <input id="name" name="name" type="text" placeholder="اكتب اسمك" required>
-
+      <input id="name" name="name" type="text" placeholder="اكتب اسمك" dir="auto" required autocomplete="off">
       <label>فرقتك</label>
       <div class="team-grid">
         <button type="button" class="team-btn" data-team="أشبال">🦁 أشبال</button>
-        <button type="button" class="team-btn" data-team="زهرات">🌸 زهرات</button>
-        <button type="button" class="team-btn" data-team="كشافة">⚜️ كشافة</button>
-        <button type="button" class="team-btn" data-team="مرشدات">🌟 مرشدات</button>
-        <button type="button" class="team-btn" data-team="متقدم">🔥 متقدم</button>
-        <button type="button" class="team-btn" data-team="رائدات">🌙 رائدات</button>
-      </div>
-      <input type="hidden" id="team" name="team" required>
-      <p id="team-error" class="team-error" hidden>اختار فرقتك الأول!</p>
-
-      <label for="message">رسالتك</label>
-      <textarea id="message" name="message" rows="5" placeholder="اكتب ردك هنا..." required></textarea>
-      <button type="submit"><span>إرسال</span><span>←</span></button>
-    </form>
-    <p id="success-message" class="success-message" hidden>وصلت رسالتك ❤️ شكراً ليك!</p>
-  </section>
-
-  <footer>Made with ❤️ for our Scout Party</footer>
-</main>
-<script src="script.js"></script>
-</body>
-</html>
