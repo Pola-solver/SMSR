@@ -24,14 +24,13 @@ body:before{
   position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;
   background:
     radial-gradient(circle at 50% 55%,#174d85 0%,#0b2347 35%,#030a18 100%);
-  animation:introExit .85s ease 4.25s forwards;
+  animation:introExit .7s ease 2.6s forwards;
+  cursor:pointer;
 }
-.intro-content{position:relative;z-index:3;text-align:center;opacity:0;transform:scale(.7);animation:welcomeIn 1.5s cubic-bezier(.2,.8,.2,1) .3s forwards}
-.intro-small{color:var(--gold);font-size:.68rem;font-weight:800;letter-spacing:.3em;direction:ltr;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease .45s forwards}
+.intro-content{position:relative;z-index:3;text-align:center;opacity:0;transform:scale(.75);animation:welcomeIn 1s cubic-bezier(.2,.8,.2,1) .2s forwards}
+.intro-small{color:var(--gold);font-size:.68rem;font-weight:800;letter-spacing:.3em;direction:ltr;margin-bottom:12px;opacity:0;animation:fadeUp .6s ease .35s forwards}
 .intro h1{font-size:clamp(4.2rem,20vw,9rem);line-height:1;font-weight:800;color:var(--orange);text-shadow:0 0 12px rgba(244,123,32,.5),0 0 45px rgba(255,194,71,.22)}
-.intro-line{width:0;height:3px;margin:22px auto 11px;background:linear-gradient(90deg,var(--red),var(--gold),var(--orange));animation:lineGrow .8s ease 1.55s forwards}
-.intro-subtitle{font-size:1rem;color:var(--cream);opacity:0;animation:fadeUp .8s ease 1.85s forwards}
+.intro-line{width:0;height:3px;margin:20px auto 11px;background:linear-gradient(90deg,var(--red),var(--gold),var(--orange));animation:lineGrow .7s ease 1s forwards}
+.intro-subtitle{font-size:1.1rem;color:var(--cream);opacity:0;animation:fadeUp .6s ease 1.2s forwards}
 .glow{position:absolute;width:300px;height:300px;border-radius:50%;filter:blur(75px);opacity:.22;background:var(--orange)}
 .glow-1{top:-130px;right:-100px;animation:floatGlow 4s ease-in-out infinite}
-.glow-2{bottom:-150px;left:-100px;background:var(--blue);animation:floatGlow 5s ease-in-out infinite reverse}
-.lantern{position:absolute;bottom:10%;left:8%;font-size:3.2rem;filter:drop-shadow(0 0 16px #ff8a24);animation:lanternFloat 3s ease-in-out infinite}
