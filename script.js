@@ -1,37 +1,38 @@
+
 // ─── CONFIG ────────────────────────────────────────────────────────────────
-// Paste your Google Apps Script Web App URL here after deploying it:
+// Google Apps Script Web App URL:
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxgrzzgc99BnBvq2zjot1f2-ZDWIrY_F2rXX3oZ9nMFuA68-cTujagRWYqfxupHVBmy/exec";
 // ───────────────────────────────────────────────────────────────────────────
 const INTRO_DURATION = 5000;
 window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("intro").setAttribute("aria-hidden", "true");
-  }, INTRO_DURATION);
+  const intro = document.getElementById("intro");
+  if (intro) {
+    setTimeout(() => {
+      intro.setAttribute("aria-hidden", "true");
+      intro.style.display = "none";
+    }, INTRO_DURATION);
+  }
 });
-// ─── FORM → GOOGLE SHEETS ──────────────────────────────────────────────────
-const form       = document.getElementById("response-form");
-const successMessage = document.getElementById("success-message");
-const submitBtn  = form.querySelector("button[type='submit']");
-const teamInput  = document.getElementById("team");
-const teamError  = document.getElementById("team-error");
-const teamBtns   = document.querySelectorAll(".team-btn");
+// ─── FORM & MODAL CONTROLS ──────────────────────────────────────────────────
+const form           = document.getElementById("response-form");
+const submitBtn      = document.getElementById("submit-btn") || form.querySelector("button[type='submit']");
+const teamInput      = document.getElementById("team");
+const teamError      = document.getElementById("team-error");
+const teamBtns       = document.querySelectorAll(".team-btn");
+const successModal   = document.getElementById("success-modal");
+const closeModalBtn  = document.getElementById("close-modal-btn");
 // Team button toggle
-teamBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    teamBtns.forEach(b => b.classList.remove("selected"));
+teamBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    teamBtns.forEach((b) => b.classList.remove("selected"));
     btn.classList.add("selected");
     teamInput.value = btn.dataset.team;
     teamError.hidden = true;
   });
 });
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const name    = document.getElementById("name").value.trim();
-  const team    = teamInput.value.trim();
-  const message = document.getElementById("message").value.trim();
-  // Validate team selected
-  if (!team) {
-    teamError.hidden = false;
-    teamError.scrollIntoView({ behavior: "smooth", block: "center" });
-    return;
+// Modal Open / Close helpers
+function openModal() {
+  if (successModal) {
+    successModal.hidden = false;
   }
