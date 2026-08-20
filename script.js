@@ -1,16 +1,32 @@
-
 // ─── CONFIG ────────────────────────────────────────────────────────────────
 // Google Apps Script Web App URL:
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxgrzzgc99BnBvq2zjot1f2-ZDWIrY_F2rXX3oZ9nMFuA68-cTujagRWYqfxupHVBmy/exec";
 // ───────────────────────────────────────────────────────────────────────────
-const INTRO_DURATION = 5000;
-window.addEventListener("load", () => {
+// ─── INTRO ANIMATION & TAP-TO-SKIP ─────────────────────────────────────────
+function dismissIntro() {
+  const intro = document.getElementById("intro");
+  const mainPage = document.getElementById("main-page");
+  if (intro && intro.style.display !== "none") {
+    intro.style.opacity = "0";
+    intro.style.transition = "opacity 0.4s ease";
+    setTimeout(() => {
+      intro.style.display = "none";
+      intro.setAttribute("aria-hidden", "true");
+    }, 400);
+  }
+  if (mainPage) {
+    mainPage.style.opacity = "1";
+    mainPage.style.transform = "translateY(0)";
+  }
+}
+// Auto dismiss intro after 3.2 seconds
+setTimeout(dismissIntro, 3200);
+// Allow user to tap/click anywhere to skip intro immediately
+document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   if (intro) {
-    setTimeout(() => {
-      intro.setAttribute("aria-hidden", "true");
-      intro.style.display = "none";
-    }, INTRO_DURATION);
+    intro.addEventListener("click", dismissIntro);
+    intro.addEventListener("touchstart", dismissIntro, { passive: true });
   }
 });
 // ─── FORM & MODAL CONTROLS ──────────────────────────────────────────────────
@@ -23,16 +39,3 @@ const successModal   = document.getElementById("success-modal");
 const closeModalBtn  = document.getElementById("close-modal-btn");
 // Team button toggle
 teamBtns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    teamBtns.forEach((b) => b.classList.remove("selected"));
-    btn.classList.add("selected");
-    teamInput.value = btn.dataset.team;
-    teamError.hidden = true;
-  });
-});
-// Modal Open / Close helpers
-function openModal() {
-  if (successModal) {
-    successModal.hidden = false;
-  }
