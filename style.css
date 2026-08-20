@@ -43,6 +43,8 @@ body:before{
   min-height:100vh;width:100%;max-width:650px;margin:0 auto;
   padding:28px 18px 20px;
   position:relative;z-index:1;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .6s ease,transform .6s ease;
 }
 .hero{text-align:center;padding-top:5px}
 .poster{
