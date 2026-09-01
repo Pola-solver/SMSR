@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2c0b1e">
+  <title>نورتوا ليلتنا ✨ | Bachelorette & Wedding Memories</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Particles & Hearts Canvas -->
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- ─── INTRO ANIMATION SCREEN ─── -->
+  <section id="intro" class="intro" role="banner" aria-label="شاشة الترحيب">
+    <div class="intro-glow glow-pink"></div>
+    <div class="intro-glow glow-gold"></div>
+    
+    <div class="floating-ring">💍</div>
+    
+    <div class="intro-content">
+      <div class="sparkle-icon sp-1">✨</div>
+      <div class="sparkle-icon sp-2">💖</div>
+      <div class="sparkle-icon sp-3">✨</div>
+      
+      <p class="intro-tag">BACHELORETTE & WEDDING PARTY</p>
+      <h1 class="intro-title">نورتوا ليلتنا</h1>
+      <div class="intro-divider">
+        <span></span>
+        <i>❤️</i>
+        <span></span>
+      </div>
+      <p class="intro-subtitle">فرحتنا ما تكملش إلا بوجودكم</p>
+      <span class="intro-skip-hint">اضغط للمتابعة ▾</span>
+    </div>
+  </section>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <main id="main-page" class="main-page">
+    
+    <!-- Hero Header -->
+    <header class="hero-card">
+      <div class="hero-badge">BRIDE TO BE · MEMORIES 🥂</div>
+      <h2 class="hero-title">شكراً لكل حد شاركنا الفرحة ✨</h2>
+      <p class="hero-desc">
+        وجودكم نوّر حفلتنا وخلّا اليوم ذكرى جميلة مش هتتنسى! ❤️<br>
+        سيبوا لنا كلمة حلوة وشاركونا الصور والفيديوهات اللي صورتوها عشان نحفظها في ألبوم ذكرياتنا على الـ Drive.
+      </p>
+      <div class="hero-decoration">
+        <span>✦</span>
+        <span>🌸</span>
+        <span>✦</span>
+      </div>
+    </header>
+
+    <!-- Response & Upload Form -->
+    <section class="upload-section">
+      <form id="party-form" autocomplete="off">
+        
+        <!-- Step 1: Guest Info -->
+        <div class="form-group">
+          <label for="guest-name" class="form-label">
+            <span class="label-icon">✍️</span> اسمك الجميل
+          </label>
+          <input 
+            type="text" 
+            id="guest-name" 
+            name="guestName" 
+            class="form-input" 
+            placeholder="اكتب اسمك هنا..." 
+            dir="auto" 
+            required
+          >
+        </div>
+
+        <!-- Role / Tribe Tags -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-icon">👑</span> صلتك بالعروسة / الحفلة
+          </label>
+          <div class="tags-grid" role="group" aria-label="اختر صلتك">
+            <button type="button" class="tag-btn" data-tag="Bride Tribe 👰‍♀️">Bride Tribe 👰‍♀️</button>
+            <button type="button" class="tag-btn" data-tag="أعز صاحبة 💖">أعز صاحبة 💖</button>
+            <button type="button" class="tag-btn" data-tag="العائلة الجميلة 🥂">العائلة الجميلة 🥂</button>
+            <button type="button" class="tag-btn" data-tag="Bridesmaid 🌸">Bridesmaid 🌸</button>
+            <button type="button" class="tag-btn" data-tag="صديقة غالية ✨">صديقة غالية ✨</button>
+            <button type="button" class="tag-btn" data-tag="ضيف مميز 🌟">ضيف مميز 🌟</button>
+          </div>
+          <input type="hidden" id="guest-tag" name="guestTag" required>
+          <p id="tag-error" class="error-text" hidden>من فضلك اختاري صلتك بالحفلة 💖</p>
+        </div>
+
+        <!-- Step 2: Sweet Message -->
+        <div class="form-group">
+          <label for="guest-message" class="form-label">
+            <span class="label-icon">💌</span> كلمة أو دعوة حلوة للعروسة
+          </label>
+          <textarea 
+            id="guest-message" 
+            name="guestMessage" 
+            class="form-textarea" 
+            rows="4" 
+            placeholder="اكتبي رسالتك، ذكرياتك من الحفلة، أو أمنياتك الحلوة..." 
+            dir="auto" 
+            required
+          ></textarea>
+        </div>
+
+        <!-- Step 3: Drag and Drop Photos Area -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-icon">📸</span> شاركينا صورك من الحفلة
+            <span class="optional-badge">(ترفع مباشرة للـ Drive)</span>
+          </label>
+          
+          <div id="drop-zone" class="drop-zone" tabindex="0">
+            <div class="drop-content">
+              <div class="drop-icon-wrapper">
+                <span class="drop-icon">🌸</span>
+                <span class="drop-camera">📷</span>
+              </div>
+              <p class="drop-primary-text">اسحبي الصور هنا أو اضغطي للاختيار</p>
+              <p class="drop-secondary-text">تقدري تختاري أكتر من صورة في نفس الوقت من الموبايل أو الكمبيوتر</p>
+              <button type="button" id="browse-btn" class="browse-btn">
+                <span>تصفح الصور أو التصوير بالكاميرا</span> 📁
+              </button>
+            </div>
+            
+            <input 
+              type="file" 
+              id="file-input" 
+              name="photos" 
+              multiple 
+              accept="image/*" 
+              class="file-input-hidden"
+            >
+          </div>
+
+          <!-- Preview Grid -->
+          <div id="preview-section" class="preview-section" hidden>
+            <div class="preview-header">
+              <span class="preview-count" id="preview-count">تم اختيار 0 صور</span>
+              <button type="button" id="clear-all-btn" class="clear-btn">مسح الكل 🗑️</button>
+            </div>
+            <div id="preview-grid" class="preview-grid"></div>
+          </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div id="upload-progress-container" class="upload-progress-container" hidden>
+          <div class="progress-bar-bg">
+            <div id="upload-progress-bar" class="upload-progress-bar" style="width: 0%"></div>
+          </div>
+          <p id="upload-status-text" class="upload-status-text">جاري تجهيز الصور للرفع...</p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submit-btn" class="submit-btn">
+          <span class="btn-text">إرسال وحفظ الصور في الدرايف ✨</span>
+          <span class="btn-arrow">←</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- Success Celebration Modal -->
+    <div id="success-modal" class="modal-overlay" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <div class="modal-confetti">🎉</div>
+        <div class="modal-rings">💍✨🥂</div>
+        <h3 class="modal-title">شكراً من كل قلوبنا! ❤️</h3>
+        <p class="modal-text">
+          كلامك الجميل والصور وصلت بنجاح وتحفظت في ألبوم ذكرياتنا على Google Drive 💖<br>
+          وجودك خلى ليلتنا أحلى وأجمل!
+        </p>
+        
+        <div class="modal-hearts">
+          <span>💖</span><span>✨</span><span>🌸</span><span>✨</span><span>💖</span>
+        </div>
+
+        <button type="button" id="modal-reset-btn" class="modal-action-btn">
+          مشاركة صور أو رسالة أخرى 📸
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Made with lots of love ❤️ for our Special Bachelorette & Wedding Night</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
